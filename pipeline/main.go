@@ -8,7 +8,7 @@ import (
 )
 
 const fileName = "small.in"
-const dataNum  = 100 * 1000000
+const dataNum  = 100 * 1000000 // 文件大小
 
 func main() {
 	// mergeDemo()
