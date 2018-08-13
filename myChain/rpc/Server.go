@@ -2,10 +2,10 @@ package main
 
 import (
 	"net/http"
-	"go/myChain/core"
 	"encoding/json"
 	"io"
 	"fmt"
+	"github.com/binkzhao/go/myChain/core"
 )
 
 var blockChain *core.BlockChain

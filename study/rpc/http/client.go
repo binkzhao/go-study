@@ -4,7 +4,7 @@ import (
 	rpc2 "net/rpc"
 	"log"
 	"fmt"
-	"go/study/rpc/core"
+	"github.com/binkzhao/go/study/rpc/core"
 )
 
 func main() {

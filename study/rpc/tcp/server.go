@@ -1,10 +1,10 @@
 package main
 
 import (
-	"go/study/rpc/core"
 	"net/rpc"
 	"net"
 	"log"
+	"github.com/binkzhao/go/study/rpc/core"
 )
 
 func chkError(err error) {

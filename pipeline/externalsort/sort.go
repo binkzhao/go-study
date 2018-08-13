@@ -2,9 +2,9 @@ package main
 
 import (
 	"os"
-	"go/pipeline/core"
 	"bufio"
 	"fmt"
+	"github.com/binkzhao/go/pipeline/core"
 )
 
 const fileInName  = "../small.in"

@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"log"
 	"fmt"
-	"go/study/rpc/core"
+	"github.com/binkzhao/go/study/rpc/core"
 )
 
 func main() {

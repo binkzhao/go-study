@@ -1,6 +1,6 @@
 package main
 
-import "go/myChain/core"
+import "github.com/binkzhao/go/myChain/core"
 
 func main() {
 	blockChain := core.NewBlockChain()

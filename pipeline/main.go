@@ -1,10 +1,10 @@
 package main
 
 import (
-	"go/pipeline/core"
 	"fmt"
 	"os"
 	"bufio"
+	"github.com/binkzhao/go/pipeline/core"
 )
 
 const fileName = "small.in"
