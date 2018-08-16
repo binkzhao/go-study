@@ -1,6 +1,6 @@
 package service
 
-import "github.com/binkzhao/go/customerManager/model"
+import "go/customerManager/model"
 
 type CustomerService struct {
 	customers []model.Customer

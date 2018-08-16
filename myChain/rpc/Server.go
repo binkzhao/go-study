@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"io"
 	"fmt"
-	"github.com/binkzhao/go/myChain/core"
+	"go/myChain/core"
 )
 
 var blockChain *core.BlockChain

@@ -1,4 +1,4 @@
-package demo
+package main
 
 import (
 	base642 "encoding/base64"

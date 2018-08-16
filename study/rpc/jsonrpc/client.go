@@ -4,7 +4,7 @@ import (
 	"log"
 	"fmt"
 	"net/rpc/jsonrpc"
-	"github.com/binkzhao/go/study/rpc/core"
+	"go/study/rpc/core"
 )
 
 func main() {

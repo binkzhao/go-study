@@ -2,8 +2,8 @@ package view
 
 import (
 	"fmt"
-	"github.com/binkzhao/go/customerManager/service"
-	"github.com/binkzhao/go/customerManager/model"
+	"go/customerManager/service"
+	"go/customerManager/model"
 )
 
 type customerView struct {

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/binkzhao/go/customerManager/view"
+	"go/customerManager/view"
 )
 
 func main() {

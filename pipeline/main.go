@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 	"bufio"
-	"github.com/binkzhao/go/pipeline/core"
+	"go/pipeline/core"
 )
 
 const fileName = "small.in"
