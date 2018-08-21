@@ -1,10 +1,11 @@
-package v1
+package v2
 
 import (
 	"errors"
 	"io"
 	"os"
 	"sync"
+	"sync/atomic"
 )
 
 // Data 代表数据的类型。
@@ -30,12 +31,10 @@ type DataFile interface {
 type myDataFile struct {
 	f       *os.File     // 文件。
 	fmutex  sync.RWMutex // 被用于文件的读写锁。
+	rcond   *sync.Cond   // 读操作需要用到的条件变量
 	woffset int64        // 写操作需要用到的偏移量。
 	roffset int64        // 读操作需要用到的偏移量。
-	wmutex  sync.Mutex   // 写操作需要用到的互斥锁。
-	rmutex  sync.Mutex   // 读操作需要用到的互斥锁。
 	dataLen uint32       // 数据块长度。
-	rcond   *sync.Cond    // 条件变量
 }
 
 // NewDataFile 会新建一个数据文件的实例。
@@ -53,14 +52,16 @@ func NewDataFile(path string, dataLen uint32) (DataFile, error) {
 }
 
 func (df *myDataFile) Read() (rsn int64, d Data, err error) {
-	// 读取并更新读偏移量。
+	// 读取并更新读偏移量
 	var offset int64
-	df.rmutex.Lock()
-	offset = df.roffset
-	df.roffset += int64(df.dataLen)
-	df.rmutex.Unlock()
+	for {
+		offset = atomic.LoadInt64(&df.roffset)
+		if atomic.CompareAndSwapInt64(&df.roffset, offset, (offset + int64(df.dataLen))) {
+			break
+		}
+	}
 
-	//读取一个数据块。
+	//读取一个数据块
 	rsn = offset / int64(df.dataLen)
 	bytes := make([]byte, df.dataLen)
 	df.fmutex.RLock()
@@ -69,7 +70,7 @@ func (df *myDataFile) Read() (rsn int64, d Data, err error) {
 		_, err = df.f.ReadAt(bytes, offset)
 		if err != nil {
 			if err == io.EOF {
-				df.rcond.Wait() //条件变量，暂时解锁的，让出资源，让写文件可以进行上锁，进行写数据，等待下一次执行读取
+				df.rcond.Wait()
 				continue
 			}
 			return
@@ -80,14 +81,16 @@ func (df *myDataFile) Read() (rsn int64, d Data, err error) {
 }
 
 func (df *myDataFile) Write(d Data) (wsn int64, err error) {
-	// 读取并更新写偏移量。
+	// 读取并更新写偏移量
 	var offset int64
-	df.wmutex.Lock()
-	offset = df.woffset
-	df.woffset += int64(df.dataLen)
-	df.wmutex.Unlock()
+	for {
+		offset = atomic.LoadInt64(&df.woffset)
+		if atomic.CompareAndSwapInt64(&df.woffset, offset, (offset + int64(df.dataLen))) {
+			break
+		}
+	}
 
-	//写入一个数据块。
+	//写入一个数据块
 	wsn = offset / int64(df.dataLen)
 	var bytes []byte
 	if len(d) > int(df.dataLen) {
@@ -98,20 +101,18 @@ func (df *myDataFile) Write(d Data) (wsn int64, err error) {
 	df.fmutex.Lock()
 	defer df.fmutex.Unlock()
 	_, err = df.f.Write(bytes)
-	df.rcond.Signal() // 通知读取文件模块，有数据可读取了
+	df.rcond.Signal()
 	return
 }
 
 func (df *myDataFile) RSN() int64 {
-	df.rmutex.Lock()
-	defer df.rmutex.Unlock()
-	return df.roffset / int64(df.dataLen)
+	offset := atomic.LoadInt64(&df.roffset)
+	return offset / int64(df.dataLen)
 }
 
 func (df *myDataFile) WSN() int64 {
-	df.wmutex.Lock()
-	defer df.wmutex.Unlock()
-	return df.woffset / int64(df.dataLen)
+	offset := atomic.LoadInt64(&df.woffset)
+	return offset / int64(df.dataLen)
 }
 
 func (df *myDataFile) DataLen() uint32 {
