@@ -34,4 +34,15 @@ func main() {
 	bsort.SelectSortUsingSortPackage(sortSlice)
 	fmt.Println(sortSlice)
 
+	// 快速排序
+	fmt.Println("快速排序")
+	slice = []int{2,1,10,8,30}
+	bsort.QuickSort(slice, 0, len(slice) - 1)
+	fmt.Println(slice)
+
+	// 快速排序
+	fmt.Println("归并排序")
+	slice = []int{2,1,10,8,30}
+	slice = bsort.MergeSort(slice)
+	fmt.Println(slice)
 }
