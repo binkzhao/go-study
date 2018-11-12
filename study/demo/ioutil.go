@@ -1,12 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
-	"fmt"
 )
 
-func main()  {
+func main() {
 	files, err := ioutil.ReadDir(".")
 	if err != nil {
 		log.Fatal(err)

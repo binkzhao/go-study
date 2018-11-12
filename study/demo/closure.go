@@ -46,19 +46,19 @@ func fibonacci() func() int {
 
 func main() {
 	// ctr, incr and ctr1, incr1 are different
-	ctr, incr := counter(100)
-	ctr1, incr1 := counter(100)
-	fmt.Println("counter - ", ctr())   // 100
-	fmt.Println("counter1 - ", ctr1()) // 100
-	// incr by 1
-	incr()
-	fmt.Println("counter - ", ctr()) // 101
-	fmt.Println("counter1- ", ctr1()) // 102
-	// incr1 by 2
-	incr1()
-	incr1()
-	fmt.Println("counter - ", ctr()) // 101
-	fmt.Println("counter1- ", ctr1()) // 102
+	//ctr, incr := counter(100)
+	//ctr1, incr1 := counter(100)
+	//fmt.Println("counter - ", ctr())   // 100
+	//fmt.Println("counter1 - ", ctr1()) // 100
+	//// incr by 1
+	//incr()
+	//fmt.Println("counter - ", ctr())  // 101
+	//fmt.Println("counter1- ", ctr1()) // 102
+	//// incr1 by 2
+	//incr1()
+	//incr1()
+	//fmt.Println("counter - ", ctr())  // 101
+	//fmt.Println("counter1- ", ctr1()) // 102
 
 	// 2.有陷阱
 	fns := functions()

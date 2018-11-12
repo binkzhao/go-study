@@ -8,7 +8,7 @@ type Params struct {
 	Width, Height int
 }
 
-type Rect struct {}
+type Rect struct{}
 
 //函数必须是导出的
 //必须有两个导出类型参数

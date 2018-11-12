@@ -2,8 +2,8 @@ package view
 
 import (
 	"fmt"
-	"go/customerManager/service"
 	"go/customerManager/model"
+	"go/customerManager/service"
 )
 
 type customerView struct {
@@ -14,8 +14,8 @@ type customerView struct {
 
 func NewCustomerView() *customerView {
 	customerView := &customerView{
-		key: "",
-		loop: true,
+		key:             "",
+		loop:            true,
 		customerService: service.NewCustomerService(),
 	}
 
@@ -123,10 +123,10 @@ func (this *customerView) delete() {
 	}
 }
 
-func (this *customerView) exit()  {
+func (this *customerView) exit() {
 	fmt.Println("确认是否退出(Y/N)：")
 	choice := ""
-	for  {
+	for {
 		fmt.Scanln(&choice)
 		if choice == "Y" || choice == "y" || choice == "N" || choice == "n" {
 			break

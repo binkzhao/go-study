@@ -7,11 +7,11 @@ import (
 )
 
 type Block struct {
-	Index int64 // 区块编号
-	Timestamp int64 // 区块时间戳
+	Index         int64  // 区块编号
+	Timestamp     int64  // 区块时间戳
 	PrevBlockHash string // 上一个区块的哈希值
-	Hash string // 当前区块的哈希值
-	Data string // 数据
+	Hash          string // 当前区块的哈希值
+	Data          string // 数据
 }
 
 // 计算区块的哈希值

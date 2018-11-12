@@ -3,11 +3,11 @@ package service
 import "go/customerManager/model"
 
 type CustomerService struct {
-	customers []model.Customer
+	customers   []model.Customer
 	customerNum int
 }
 
-func NewCustomerService() *CustomerService{
+func NewCustomerService() *CustomerService {
 	customerService := &CustomerService{}
 	customerService.customerNum = 1
 	customer := model.NewCustomer(1, "赵丙立", "男", 27, "18098318601", "2447708698@qq.com")

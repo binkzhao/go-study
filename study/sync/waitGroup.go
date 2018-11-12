@@ -13,11 +13,11 @@ func main() {
 	demo2()
 }
 
-func demo1()  {
+func demo1() {
 	sign := make(chan byte, 3)
 	for i := 2; i <= 4; i++ {
 		go func(i int) {
-			fmt.Println("g",i," done")
+			fmt.Println("g", i, " done")
 			sign <- byte(i)
 		}(i)
 	}
@@ -27,13 +27,13 @@ func demo1()  {
 	}
 }
 
-func demo2()  {
+func demo2() {
 	var wg sync.WaitGroup
 	wg.Add(3) // 计数+3
 
 	for i := 2; i <= 4; i++ {
 		go func(i int) {
-			fmt.Println("g",i," done")
+			fmt.Println("g", i, " done")
 			wg.Done() // 让wait等待计数-1
 		}(i)
 	}

@@ -3,12 +3,12 @@ package model
 import "fmt"
 
 type Customer struct {
-	Id int
-	Name string
+	Id     int
+	Name   string
 	Gender string
-	Age int
-	Phone string
-	Email string
+	Age    int
+	Phone  string
+	Email  string
 }
 
 func NewCustomer(
@@ -16,12 +16,12 @@ func NewCustomer(
 	age int, phone string, email string,
 ) Customer {
 	return Customer{
-		Id: id,
-		Name: name,
+		Id:     id,
+		Name:   name,
 		Gender: gender,
-		Age: age,
-		Phone: phone,
-		Email: email,
+		Age:    age,
+		Phone:  phone,
+		Email:  email,
 	}
 }
 
@@ -30,11 +30,11 @@ func NewCustomer2(
 	age int, phone string, email string,
 ) Customer {
 	return Customer{
-		Name: name,
+		Name:   name,
 		Gender: gender,
-		Age: age,
-		Phone: phone,
-		Email: email,
+		Age:    age,
+		Phone:  phone,
+		Email:  email,
 	}
 }
 
@@ -48,4 +48,3 @@ func (this Customer) GetInfo() string {
 		this.Email,
 	)
 }
-

@@ -12,7 +12,7 @@ func main() {
 }
 
 // WithTimeout 返回 WithDeadline(parent, time.Now().Add(timeout))。
-func useWithTimeout()  {
+func useWithTimeout() {
 	// Pass a context with a timeout to tell a blocking function that it
 	// should abandon its work after the timeout elapses.
 	ctx, cancel := context.WithTimeout(context.Background(), 50*time.Millisecond)
@@ -26,7 +26,7 @@ func useWithTimeout()  {
 	}
 }
 
-func useWithDeadline()  {
+func useWithDeadline() {
 	d := time.Now().Add(50 * time.Millisecond)
 	ctx, cancel := context.WithDeadline(context.Background(), d)
 
@@ -43,7 +43,7 @@ func useWithDeadline()  {
 	}
 }
 
-func useWithValue()  {
+func useWithValue() {
 	type contextKey string
 	f := func(ctx context.Context, k contextKey) {
 		if v := ctx.Value(k); v != nil {

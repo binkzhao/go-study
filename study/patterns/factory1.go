@@ -3,7 +3,7 @@ package patterns
 // 简单工厂模式
 
 import (
-"fmt"
+	"fmt"
 )
 
 type Operater interface {

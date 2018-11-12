@@ -1,13 +1,13 @@
 package core
 
 import (
-	"log"
 	"fmt"
+	"log"
 )
 
 // 区块链结构体
 type BlockChain struct {
-	Blocks [] *Block
+	Blocks []*Block
 }
 
 // 创建区块链
@@ -19,7 +19,7 @@ func NewBlockChain() *BlockChain {
 }
 
 func (self *BlockChain) SendData(data string) {
-	preBlock := self.Blocks[len(self.Blocks) - 1]
+	preBlock := self.Blocks[len(self.Blocks)-1]
 	newBlock := GenerateNewBlock(*preBlock, data)
 	self.AppendBlock(&newBlock)
 }
@@ -40,14 +40,14 @@ func (self *BlockChain) AppendBlock(newBlock *Block) {
 
 // 验证一个新的区块是否有效
 func (self *BlockChain) isValidBlock(newBlock Block) bool {
-	oldBlock := self.Blocks[len(self.Blocks) - 1]
+	oldBlock := self.Blocks[len(self.Blocks)-1]
 
-	if newBlock.Index - 1 != oldBlock.Index {
+	if newBlock.Index-1 != oldBlock.Index {
 		return false
 	}
 
 	if newBlock.PrevBlockHash != oldBlock.Hash {
-		return  false
+		return false
 	}
 
 	if calculateHash(newBlock) != newBlock.Hash {
@@ -58,7 +58,7 @@ func (self *BlockChain) isValidBlock(newBlock Block) bool {
 }
 
 // 显示区块信息
-func (self *BlockChain) Print()  {
+func (self *BlockChain) Print() {
 	for _, block := range self.Blocks {
 		fmt.Printf("Index: %d\n", block.Index)
 		fmt.Printf("Prev.Hash: %s\n", block.PrevBlockHash)
@@ -68,4 +68,3 @@ func (self *BlockChain) Print()  {
 		fmt.Println()
 	}
 }
-

@@ -1,12 +1,18 @@
 package bsort
 
+
 import (
 	"sort"
+	"fmt"
 )
+
+func init()  {
+	fmt.Println("my first")
+}
 
 /**
 * 使用golang实现常见排序算法，以及使用sort包来实现这些算法：统一都是升序排序
-*/
+ */
 
 // 冒泡排序
 func BulleSort(items []int) {
@@ -132,7 +138,7 @@ func MergeSort(items []int) []int {
 }
 
 func merge(left, right []int) (result []int) {
-	result = make([]int, len(right) + len(left))
+	result = make([]int, len(right)+len(left))
 	var i, j, p int
 	for i < len(left) && j < len(right) {
 		if left[i] <= right[j] {

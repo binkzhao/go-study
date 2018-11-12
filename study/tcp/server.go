@@ -74,7 +74,7 @@ func main() {
 }
 
 // notify all clients
-func notify(conn net.Conn, msg string)  {
+func notify(conn net.Conn, msg string) {
 	for _, curCon := range clients {
 		if curCon.RemoteAddr() != conn.RemoteAddr() {
 			curCon.Write([]byte(msg))
@@ -83,7 +83,7 @@ func notify(conn net.Conn, msg string)  {
 }
 
 // one client has left
-func disconnect(conn net.Conn, name string)  {
+func disconnect(conn net.Conn, name string) {
 	for index, curCon := range clients {
 		if curCon.RemoteAddr() == conn.RemoteAddr() {
 			disMsg := fmt.Sprintf("【%s】has left the room", name)

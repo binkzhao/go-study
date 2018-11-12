@@ -1,14 +1,14 @@
 package main
 
 import (
-	"fmt"
-	"os"
 	"bufio"
+	"fmt"
 	"go/pipeline/core"
+	"os"
 )
 
 const fileName = "small.in"
-const dataNum  = 100 * 1000000 // 文件大小
+const dataNum = 100 * 1000000 // 文件大小
 
 func main() {
 	// mergeDemo()
@@ -31,7 +31,7 @@ func main() {
 	}
 	defer file.Close()
 	out := core.ReaderSource(bufio.NewReader(file), -1) // 使用bufio io来使数据读取快点
-	count := 0 // 这里默认只显示前100个数
+	count := 0                                          // 这里默认只显示前100个数
 	for v := range out {
 		fmt.Println(v)
 		count++
@@ -41,12 +41,11 @@ func main() {
 	}
 }
 
-func mergeDemo(){
-	in1 := core.InMemSort(core.ArraySource(3,5,10,2,4))
-	in2 := core.InMemSort(core.ArraySource(19, 34, 10, 8 ,90))
+func mergeDemo() {
+	in1 := core.InMemSort(core.ArraySource(3, 5, 10, 2, 4))
+	in2 := core.InMemSort(core.ArraySource(19, 34, 10, 8, 90))
 	out := core.Merge(in1, in2)
 	for v := range out {
 		fmt.Println(v)
 	}
 }
-

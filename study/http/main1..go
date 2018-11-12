@@ -1,18 +1,18 @@
 package main
 
 import (
-	"net/http"
-	"io/ioutil"
-	"fmt"
 	"bytes"
+	"fmt"
+	"io/ioutil"
 	"log"
+	"net/http"
 )
 
 func main() {
 	log.Fatal()
 }
 
-func demo1()  {
+func demo1() {
 	// 1. GET
 	res, _ := http.Get("http://baidu.com")
 	defer res.Body.Close()

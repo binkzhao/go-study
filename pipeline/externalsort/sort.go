@@ -1,13 +1,13 @@
 package main
 
 import (
-	"os"
 	"bufio"
 	"fmt"
 	"go/pipeline/core"
+	"os"
 )
 
-const fileInName  = "../small.in"
+const fileInName = "../small.in"
 const fileOutName = "../small.out"
 
 // 外部排序
@@ -57,7 +57,7 @@ func createPipeline(fileName string, fileSize, chunkCount int) <-chan int {
 			panic(err)
 		}
 
-		file.Seek(int64(i * chunkSize), 0) // 设置每次读取文件的开始位置
+		file.Seek(int64(i*chunkSize), 0) // 设置每次读取文件的开始位置
 		source := core.ReaderSource(bufio.NewReader(file), chunkSize)
 		sortResults = append(sortResults, core.InMemSort(source))
 	}

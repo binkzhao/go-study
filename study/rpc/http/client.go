@@ -1,10 +1,10 @@
 package main
 
 import (
-	rpc2 "net/rpc"
-	"log"
 	"fmt"
 	"go/study/rpc/core"
+	"log"
+	rpc2 "net/rpc"
 )
 
 func main() {

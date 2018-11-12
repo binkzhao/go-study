@@ -35,7 +35,7 @@ type myDataFile struct {
 	wmutex  sync.Mutex   // 写操作需要用到的互斥锁。
 	rmutex  sync.Mutex   // 读操作需要用到的互斥锁。
 	dataLen uint32       // 数据块长度。
-	rcond   *sync.Cond    // 条件变量
+	rcond   *sync.Cond   // 条件变量
 }
 
 // NewDataFile 会新建一个数据文件的实例。

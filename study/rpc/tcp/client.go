@@ -1,10 +1,10 @@
 package main
 
 import (
-	"net/rpc"
-	"log"
 	"fmt"
 	"go/study/rpc/core"
+	"log"
+	"net/rpc"
 )
 
 func main() {
@@ -18,7 +18,7 @@ func main() {
 	ret := 0
 	//调用远程方法
 	//注意第三个参数是指针类型
-	err2 := rpc.Call("Rect.Area", core.Params{50, 100}, &ret);
+	err2 := rpc.Call("Rect.Area", core.Params{50, 100}, &ret)
 	if err2 != nil {
 		log.Fatal(err2)
 	}

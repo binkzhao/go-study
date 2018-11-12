@@ -1,12 +1,12 @@
 package core
 
 import (
-	"sort"
-	"io"
 	"encoding/binary"
-	"math/rand"
-	"time"
 	"fmt"
+	"io"
+	"math/rand"
+	"sort"
+	"time"
 )
 
 // 开始排序的时间
@@ -114,7 +114,7 @@ func ReaderSource(reader io.Reader, chunkSize int) <-chan int {
 }
 
 // 把数据写入文件流
-func WriterSink(writer io.Writer, in <-chan int)  {
+func WriterSink(writer io.Writer, in <-chan int) {
 	for v := range in {
 		buffer := make([]byte, 8)
 		binary.BigEndian.PutUint64(buffer, uint64(v))

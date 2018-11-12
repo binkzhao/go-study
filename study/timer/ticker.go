@@ -1,8 +1,8 @@
 package main
 
 import (
-	"time"
 	"fmt"
+	"time"
 )
 
 // 断续器： 会在到期后立刻进入下一个周期并等待被再次调用，周而复始，直到被停止
