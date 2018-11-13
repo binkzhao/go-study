@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package hello;
+
+message HelloReq {
+    string msg = 1;
+}
+
+message HelloRes {
+    string msg = 1;
+}
+
+service Hello {
+    rpc echo (HelloReq) returns (HelloRes);
+}

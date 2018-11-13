@@ -6,13 +6,10 @@ import (
 	pb "go/grpc/protos"
 	"os"
 	"golang.org/x/net/context"
-	"math/rand"
 	"go/grpc/consts"
-	"encoding/json"
 	"fmt"
+	"strings"
 )
-
-const defaultName = "Bink"
 
 func main() {
 	conn, err := grpc.Dial(consts.HOST, grpc.WithInsecure())
@@ -21,25 +18,15 @@ func main() {
 	}
 	defer conn.Close()
 
-	c := pb.NewStudentServiceClient(conn)
+	client := pb.NewHelloClient(conn)
+	res, err := client.Echo(context.Background(), &pb.HelloReq{
+		Msg: strings.Join(os.Args[1:], " "),
+	})
 
-	name := defaultName
-	if len(os.Args) > 1 {
-		name = os.Args[1]
-	}
-
-	r, err := c.StudentAdd(
-		context.Background(),
-		&pb.Request{
-			Sid: int32(rand.Int()%10000000),
-			Name: name,
-			Age: int32(rand.Int()%100),
-		},
-	)
 	if err != nil {
-		log.Fatalf("Could not Add Student: %v", err)
+		fmt.Errorf("client echo failed. err: [%v]", err)
+		return
 	}
 
-	repStr,_ := json.Marshal(r)
-	fmt.Println("Response: ", string(repStr))
+	fmt.Printf("Msg from server: %s", res.GetMsg())
 }
