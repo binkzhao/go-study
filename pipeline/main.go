@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"go/pipeline/core"
+	"go-study/pipeline/core"
 	"os"
 )
 
@@ -16,7 +16,7 @@ func main() {
 	// 生成文件
 	file, err := os.Create(fileName)
 	if err != nil {
-		panic(err)
+		panic(any(err))
 	}
 	defer file.Close()
 	p := core.RandomSource(dataNum)
@@ -27,7 +27,7 @@ func main() {
 	// 从文件读取数据
 	file, err = os.Open(fileName)
 	if err != nil {
-		panic(err)
+		panic(any(err))
 	}
 	defer file.Close()
 	out := core.ReaderSource(bufio.NewReader(file), -1) // 使用bufio io来使数据读取快点

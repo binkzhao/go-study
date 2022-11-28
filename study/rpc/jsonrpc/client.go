@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go/study/rpc/core"
+	"go-study/study/rpc/core"
 	"log"
 	"net/rpc/jsonrpc"
 )

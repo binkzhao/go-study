@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go/study/bsort"
+	"go-study/study/bsort"
 	"sort"
 )
 

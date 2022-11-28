@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	filePath := "/Users/binkzhao/go/src/go"
+	filePath := "/Users/binkzhao/go-study/src/go"
 	fmt.Println(path.IsAbs(filePath))
 	dir, file := path.Split(filePath)
 	fmt.Println(dir, "-", file)

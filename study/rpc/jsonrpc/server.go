@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go/study/rpc/core"
+	"go-study/study/rpc/core"
 	"log"
 	"net"
 	"net/rpc"

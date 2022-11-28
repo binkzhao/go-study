@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"go/pipeline/core"
+	"go-study/pipeline/core"
 	"os"
 )
 
@@ -20,7 +20,7 @@ func main() {
 func printFile(fileName string) {
 	file, err := os.Open(fileName)
 	if err != nil {
-		panic(err)
+		panic(any(err))
 	}
 	defer file.Close()
 
@@ -38,7 +38,7 @@ func printFile(fileName string) {
 func writeToFile(p <-chan int, fileName string) {
 	file, err := os.Create(fileName)
 	if err != nil {
-		panic(err)
+		panic(any(err))
 	}
 	defer file.Close()
 
@@ -54,7 +54,7 @@ func createPipeline(fileName string, fileSize, chunkCount int) <-chan int {
 	for i := 0; i < chunkCount; i++ {
 		file, err := os.Open(fileName)
 		if err != nil {
-			panic(err)
+			panic(any(err))
 		}
 
 		file.Seek(int64(i*chunkSize), 0) // 设置每次读取文件的开始位置

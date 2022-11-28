@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
+	"fmt"
+	"github.com/gorilla/websocket"
 	"io/ioutil"
 	"net/http"
-	"github.com/gorilla/websocket"
-	"fmt"
+	"os"
 	"time"
 )
 
@@ -67,6 +67,6 @@ func main() {
 
 func checkErr(err error) {
 	if err != nil {
-		panic(err)
+		panic(any(err))
 	}
 }

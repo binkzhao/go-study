@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net"
-	"log"
 	"bufio"
 	"fmt"
-	"go/chat/demo2/core"
+	"go-study/chat/demo2/core"
+	"log"
+	"net"
 )
 
 type userCH chan<- string

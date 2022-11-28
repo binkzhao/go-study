@@ -1,13 +1,13 @@
 package main
 
 import (
-	"net"
-	"log"
-	"io"
-	"os"
-	"fmt"
 	"bufio"
-	"go/chat/demo2/core"
+	"fmt"
+	"go-study/chat/demo2/core"
+	"io"
+	"log"
+	"net"
+	"os"
 )
 
 func main() {
